@@ -19,6 +19,12 @@ local packer_bootstrap = ensure_packer()
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
+	-- Dashboard au démarrage
+	use {
+		'goolord/alpha-nvim',
+		requires = { 'nvim-tree/nvim-web-devicons' }
+	}
+
 	-- Interface Git
 	use 'tpope/vim-fugitive'        -- Git complet
 	use 'kdheepak/lazygit.nvim'     -- Interface lazygit dans Neovim

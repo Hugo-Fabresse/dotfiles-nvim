@@ -7,6 +7,8 @@
 vim.keymap.set({'n','i'}, '<C-s>', '<Esc>:w<CR>a', { silent = true, noremap = true })
 -- Quitter avec Leader
 vim.keymap.set('n','<Leader>q', ':qa<CR>', { silent = true, noremap = true })
+-- Dashboard
+vim.keymap.set('n','<Leader>d', ':Alpha<CR>', { silent = true, noremap = true, desc = "Dashboard" })
 -- Splits
 vim.keymap.set('n','<Leader>sv',':vsplit<CR>',{ silent=true, noremap=true })
 vim.keymap.set('n','<Leader>sh',':split<CR>',{ silent=true, noremap=true })
