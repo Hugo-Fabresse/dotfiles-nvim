@@ -4,7 +4,10 @@
 --
 
 local ok, lualine = pcall(require, 'lualine')
-if not ok then return end
+if not ok then 
+  vim.notify("lualine not found", vim.log.levels.WARN)
+  return
+end
 
 -- Couleurs Tokyo Night
 local colors = {
@@ -44,13 +47,13 @@ lualine.setup({
   options = {
     theme = nihil_theme,
     component_separators = '',
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     globalstatus = true,
   },
 
   sections = {
     lualine_a = {
-      { 'mode', separator = { left = '' }, right_padding = 2 },
+      { 'mode', separator = { left = '' }, right_padding = 2 },
     },
 
     lualine_b = {
@@ -65,15 +68,19 @@ lualine.setup({
       {
         'diagnostics',
         sources = { 'nvim_lsp' },
-        symbols = { error = '✖ ', warn = '⚠ ', info = 'ℹ ', hint = '💡' },
+        symbols = { error = '✖ ', warn = '⚠ ', info = "i" },
         colored = true,
+      },
+      {
+        'diff',
+        symbols = { added = ' ', modified = ' ', removed = ' ' },
       },
     },
 
     lualine_y = {},
 
     lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
+      { 'location', separator = { right = '' }, left_padding = 2 },
     },
   },
 

@@ -14,33 +14,5 @@ edgy.setup({
     wo={winbar=true, winfixwidth=true, winhighlight="WinBar:EdgyTitle", signcolumn="no"}
 })
 
--- FIX POUR NVIM . : Ouvrir un fichier au démarrage
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function(data)
-        -- Si fichier normal, ne rien faire
-        if data.file ~= "" and vim.fn.isdirectory(data.file) == 0 then
-            return
-        end
-        
-        -- Si dossier
-        local is_dir = vim.fn.isdirectory(data.file) == 1
-        if is_dir then
-            vim.cmd.cd(data.file)
-            
-            -- Chercher un fichier à ouvrir
-            local files = vim.fn.readdir('.', function(name)
-                return vim.fn.isdirectory(name) == 0
-            end)
-            
-            if #files > 0 then
-                -- Ouvrir le premier fichier
-                vim.schedule(function()
-                    vim.cmd("edit " .. vim.fn.fnameescape(files[1]))
-                end)
-            end
-        end
-    end,
-})
-
 -- EOF
 
